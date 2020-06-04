@@ -26,7 +26,6 @@ if(isset($_GET['serve'])):
         exit;
     }
 
-
     /**
      * Admarketplace API
      */
