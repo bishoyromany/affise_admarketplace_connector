@@ -1,0 +1,1 @@
+# Affise - Admarketplace Connector Script
