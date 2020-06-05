@@ -29,3 +29,11 @@ function post($url, $data, $headers){
     curl_close($curl);
     return $response;
 }
+
+
+function addhttp($url) {
+    if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+        $url = "http://" . $url;
+    }
+    return $url;
+}
