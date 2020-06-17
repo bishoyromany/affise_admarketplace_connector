@@ -1,4 +1,14 @@
 # Affise - Admarketplace Connector Script, General Notes
+## script structure 
+* backend [folder] 
+    * helpers.php [here we have all helpers functions]
+    * serve.php [here is the main script the fetch offers and store offers from admarketplace to affise]
+* .gitignore [file for github]
+* .tokens.json [should be renamed to tokens.json, and edited it's content as it's like the config file]
+* index.php [the user interface of the script where the form exist]
+* readme.md [this file descript how the script will work]
+* tech.md [the file you are reading now]
+
 ## Affise Sample Offer Parameters -> No Payment
 ```php
     $affiseParams = $affise['requestAddon'];
