@@ -1,0 +1,25 @@
+{
+    "admarketplace": {
+        "url": "http://trendqube.ampfeed.com/xmlamp/feed",
+        "requestAddon": {
+            "partner": "partner name",
+            "ip": "request api",
+            "ua": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36",
+            "v": 7,
+            "out": "json",
+            "results": 20
+        }
+    },
+    "affise": {
+        "url": "https://api-trendqube.affise.com/3.0/admin/offer",
+        "requestAddon": {
+            "advertiser": "advertiser id"
+        },
+        "headers": [
+            "API-Key: api login key"
+        ]
+    },
+    "sub2": [
+        "sub2 list not required"
+    ]
+}
