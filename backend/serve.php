@@ -5,8 +5,6 @@
  */
 require_once "helpers.php";
 
-
-
 if(isset($_GET['serve'])):
     /**
      * get the API tokens
@@ -22,7 +20,7 @@ if(isset($_GET['serve'])):
     if($validator !== true){
         echo $validator;
         exit;
-    }
+    }  
 
     /**
      * Admarketplace API
@@ -31,18 +29,20 @@ if(isset($_GET['serve'])):
     $qt = $_GET['qt'];
     // sub1 single data
     $sub1 = $_GET['sub1'];
-    // sub2 single check
-    $sub2 = $_GET['sub2'];
-    $m_aaid = $_GET['m-aaid'];
     // sub2 list
+    $sub2 = json_decode($_GET['sub2']);
+    // m-aaid for admarketplace api
+    $m_aaid = $_GET['m-aaid'];
+    // sub2 list from the json file
     $sub2List = $tokens['sub2'];
     // the added offers list
     $addedOffers = [];
+    
     /**
-     * check if request for a list or a single sub2
+     * check if request for sub1 from the json file or from the ui form
      */
     if(empty($sub2List)){
-        $sub2List = [$sub2];
+        $sub2List = $sub2;
     }
 
     /**
@@ -50,7 +50,7 @@ if(isset($_GET['serve'])):
      */
     foreach($sub2List as $sub2):
         /**
-         * get admarketplace offets
+         * get admarketplace offers
          */
         $admarketplace = $tokens['admarketplace'];
 
@@ -114,5 +114,5 @@ if(isset($_GET['serve'])):
     /**
      * show the result of added offers
      */
-    dd(["offsers" => $addedOffers, "countOfAddedOffers" => count($addedOffers)]);
+    dd(["addedOffsers" => $addedOffers, "countOfAddedOffers" => count($addedOffers)]);
 endif;

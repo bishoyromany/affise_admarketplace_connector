@@ -1,4 +1,7 @@
 <?php 
+/**
+ * debug the content of any variable
+ */
 function dd(...$data){
     foreach($data as $d){
         echo "<pre>";
@@ -8,7 +11,9 @@ function dd(...$data){
     exit;
 }
 
-
+/**
+ * validate the get request
+ */
 function validate(...$data){
     foreach($data as $d){
         if(!isset($_GET[$d])){
@@ -19,6 +24,9 @@ function validate(...$data){
     return true;
 }
 
+/**
+ * send a post request to api
+ */
 function post($url, $data, $headers){
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_POST, true);
@@ -30,7 +38,9 @@ function post($url, $data, $headers){
     return $response;
 }
 
-
+/**
+ * add http to the url if doesn't exist
+ */
 function addhttp($url) {
     if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
         $url = "http://" . $url;
