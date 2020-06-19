@@ -20,6 +20,7 @@
                 ],
                 'headers' => [$_POST['header']]
             ],
+            'sub2' => []
         ];
         if(!empty($_POST['sub2'])){
             $data['sub2'] = json_decode($_POST['sub2']);
