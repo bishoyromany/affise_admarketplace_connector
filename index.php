@@ -86,6 +86,9 @@
                         <div class="col-md-6 offset-3">
                             <button class="btn btn-success btn-block">Start Script</button>
                         </div>
+                        <div class="col-md-12 text-center">
+                            <a href="config.php">Configuration API</a>
+                        </div>
                     </div>
                 </form> 
             </div>
@@ -100,7 +103,7 @@
             let content;
             let container = $("#sub2Container");
             let results = ['com.chess'];
-
+            $("#sub2").val(JSON.stringify(results));
             const updateHandlers = () => {
                 $(".add-sub2").click(() => {
                     addSub2();
