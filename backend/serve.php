@@ -80,7 +80,7 @@ if(isset($_GET['serve'])):
             $affiseParams = $affise['requestAddon'];
             $affiseParams['title'] = $ad->name . ' - ' . $ad->id . ' - ' . $sub2;
             $affiseParams['url'] = $ad->click_url;
-            $affiseParams['url_preview'] = addhttp($ad->image_url);
+            $affiseParams['url_preview'] = addhttp($ad->impression_url);
             $affiseParams['status'] = 'active';
             $affiseParams['sub_account_1'] = $sub1;
             $affiseParams['sub_account_2'] = $sub2;
@@ -92,7 +92,7 @@ if(isset($_GET['serve'])):
             // ];
             $affiseParams['external_offer_id'] = $ad->id;
 
-            dd($affiseParams);
+            dd($ad);
 
             /**
              * payment part
