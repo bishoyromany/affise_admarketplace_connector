@@ -27,8 +27,11 @@ if(isset($_GET['serve'])):
      */
     // search keyword
     // $qt = $_GET['qt'];
+    // referrer
+    $rfr = isset($_GET['rfr']) ? $_GET['rfr'] : '';
     // sub1 single data
     $sub1 = $_GET['sub1'];
+    $fakeSub1 = isset($_GET['fakeSub1']) ? $_GET['fakeSub1'] : $sub1;
     // sub2 list
     $sub2 = json_decode($_GET['sub2']);
     // m-aaid for admarketplace api
@@ -57,6 +60,7 @@ if(isset($_GET['serve'])):
         $admarketplaceQuery = $admarketplace['requestAddon'];
         // qt disabled to tile feed
         // $admarketplaceQuery['qt'] = $qt;
+        $admarketplaceQuery['rfr'] = $rfr;
         $admarketplaceQuery['sub1'] = $sub1;
         $admarketplaceQuery['sub2'] = $sub2;
         $admarketplaceQuery['m-aaid'] = $m_aaid;
@@ -65,8 +69,7 @@ if(isset($_GET['serve'])):
 
         $admarketplaceResponse = json_decode(file_get_contents($admarketplaceUrl));
         $ads = $admarketplaceResponse->tiles;
-
-
+        
         /**
          * loop admarketplace offers
          */
@@ -80,19 +83,19 @@ if(isset($_GET['serve'])):
             $affiseParams = $affise['requestAddon'];
             $affiseParams['title'] = $ad->name . ' - ' . $ad->id . ' - ' . $sub2;
             $affiseParams['url'] = $ad->click_url;
-            $affiseParams['url_preview'] = addhttp($ad->impression_url);
+            // $affiseParams['url_preview'] = addhttp($ad->impression_url);
             $affiseParams['status'] = 'active';
-            $affiseParams['sub_account_1'] = $sub1;
+            $affiseParams['sub_account_1'] = $fakeSub1;
             $affiseParams['sub_account_2'] = $sub2;
+            $affiseParams['allow_impressions'] = 1;
+            $affiseParams['notes'] = $ad->impression_url;
+            $affiseParams['external_offer_id'] = $ad->id;
             /**
              * no description exist in the new api
              */
             // $affiseParams['description_lang'] = [
             //     'en' => $ad->description,
             // ];
-            $affiseParams['external_offer_id'] = $ad->id;
-
-            dd($ad);
 
             /**
              * payment part

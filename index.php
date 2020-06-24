@@ -31,6 +31,7 @@
         <div class="container">
             <div class="col-md-6 offset-3">
                 <form action="backend/serve.php">
+                    <!-- removed for the new api -->
                     <!-- QT value for qt param in admarketplace API -->
                     <!-- <div class="form-group">
                         <div class="row">
@@ -42,6 +43,7 @@
                             </div>
                         </div>
                     </div> -->
+
                     <!-- sub1 value for admarketplace -->
                     <div class="form-group">
                         <div class="row">
@@ -49,25 +51,32 @@
                                 <label for="sub1">Sub 1</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" name="sub1" value="123456789" id="sub1" class="form-control" placeholder="Admarketplace sub1 Column">
+                                <input type="text" name="sub1" value="10130" id="sub1" class="form-control" placeholder="Admarketplace sub1 Column">
                             </div>
                         </div>
                     </div>
+
+                    <!-- sub1 value for admarketplace -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="fakeSub1">Fake Sub 1</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" name="fakeSub1" value="10130" id="fakeSub1" class="form-control" placeholder="Fake Sub1 To Store in Affise">
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- sub2 list values for admarketplace -->
                     <div class="form-group">
                         <div class="row" id="sub2Container">
-                            <!-- <div class="col-md-3">
-                                <label for="sub2">Sub 2</label>
-                            </div>
-                            <div class="col-md-7">
-                                <input type="text" name="sub2" value="com.chess" id="sub2" class="form-control" placeholder="Admarketplace sub2 Column">
-                            </div>
-                            <div class="col-md-1"><i class="clickable-icon add-sub2">&plus;</i></div>
-                            <div class="col-md-1"><i class="clickable-icon remove-sub2">&times;</i></div> -->
                         </div>
                     </div>
+                    
                     <!-- the real sub2 list values -->
                     <input type="hidden" name="sub2" id="sub2" value="1">
+                    
                     <!-- m-aaid value for m-aaid for admarketplace -->
                     <div class="form-group">
                         <div class="row">
@@ -79,6 +88,19 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Referrer value for rfr for admarketplace -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="rfr">Referrer</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" name="rfr" id="rfr" class="form-control" placeholder="Admarketplace Referrer URL">
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- start the script value, must be 1 to start the script -->
                     <input type="hidden" name="serve" value="1">
                     <!-- submit button -->
@@ -94,6 +116,7 @@
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -102,7 +125,7 @@
             let counter = 1;
             let content;
             let container = $("#sub2Container");
-            let results = ['placement1'];
+            let results = ['com.chess'];
             $("#sub2").val(JSON.stringify(results));
             const updateHandlers = () => {
                 $(".add-sub2").click(() => {

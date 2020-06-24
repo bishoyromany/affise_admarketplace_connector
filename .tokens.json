@@ -21,5 +21,10 @@
     },
     "sub2": [
         "sub2 list not required"
-    ]
+    ],
+    "database": {
+        "username": "root",
+        "password": "",
+        "prefix": "affise_api"
+    }
 }

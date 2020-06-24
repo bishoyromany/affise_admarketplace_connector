@@ -22,8 +22,16 @@
             ],
             'sub2' => []
         ];
+
         if(!empty($_POST['sub2'])){
-            $data['sub2'] = json_decode($_POST['sub2']);
+            $filteredSub2 = [];
+            $sub2Data = json_decode($_POST['sub2']);
+            foreach($sub2Data as $s){
+                if(!empty($s)){ $filteredSub2[] = $s; }
+            }
+            if(!empty($filteredSub2)){
+                $data['sub2'] = $filteredSub2;
+            }
         }
 
         file_put_contents(__DIR__.'/tokens.json', json_encode($data));
@@ -224,30 +232,30 @@
         $(document).ready(function () {
             let content;
             let container = $("#sub2Container");
-            let results = [        
-                "com.emoji.coolkeyboard",
-                "com.time.trigger",
-                "com.pixel.art.coloring.color.number",
-                "com.scopely.yux",
-                "kr.sira.compass",
-                "com.gamebility.onet",
-                "com.chess",
-                "com.freeplay.runandfight",
-                "com.seenax.HideAndSeek",
-                "com.game.sortit3d",
-                "com.rage.road",
-                "com.clean.emptyrocket",
-                "com.vinance.lockdown"
-            ];
+            <?php 
+                $sub2 = '';
+                for($x = 0; $x < count($tokens->sub2) ; $x++){
+                    $sub2 .= '"'.$tokens->sub2[$x].'"';
+                    if($x + 1 < count($tokens->sub2)){
+                        $sub2 .= ",";
+                    }
+                }
+            ?>
+            let results = [<?php echo $sub2; ?>];
+            if(results.length == 0){
+                results.push('');
+            }
             let counter = results.length;
             $("#sub2").val(JSON.stringify(results));
             const updateHandlers = () => {
                 $(".add-sub2").click(() => {
                     addSub2();
+                    $("#sub2").val(JSON.stringify(results));
                 });
 
                 $(".remove-sub2").click(function(){
                     removeSub2(parseInt($(this).data('id')) - 1);
+                    $("#sub2").val(JSON.stringify(results));
                 });
 
                 $(".sub2").keyup(function(){
