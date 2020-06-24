@@ -1,6 +1,6 @@
 {
     "admarketplace": {
-        "url": "http://trendqube.ampfeed.com/xmlamp/feed",
+        "url": "http://trendqube.tiles.ampfeed.com/tiles",
         "requestAddon": {
             "partner": "partner name",
             "ip": "request api",

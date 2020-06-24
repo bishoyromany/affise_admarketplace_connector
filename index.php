@@ -32,7 +32,7 @@
             <div class="col-md-6 offset-3">
                 <form action="backend/serve.php">
                     <!-- QT value for qt param in admarketplace API -->
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="qt">QT</label>
@@ -41,7 +41,7 @@
                                 <input type="text" name="qt" value="tiktok" id="qt" class="form-control" placeholder="Admarketplace QT Column">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- sub1 value for admarketplace -->
                     <div class="form-group">
                         <div class="row">
@@ -49,7 +49,7 @@
                                 <label for="sub1">Sub 1</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" name="sub1" value="tiktok" id="sub1" class="form-control" placeholder="Admarketplace sub1 Column">
+                                <input type="text" name="sub1" value="123456789" id="sub1" class="form-control" placeholder="Admarketplace sub1 Column">
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
             let counter = 1;
             let content;
             let container = $("#sub2Container");
-            let results = ['com.chess'];
+            let results = ['placement1'];
             $("#sub2").val(JSON.stringify(results));
             const updateHandlers = () => {
                 $(".add-sub2").click(() => {

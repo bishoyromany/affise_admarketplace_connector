@@ -13,7 +13,7 @@ if(isset($_GET['serve'])):
     /**
      * validate the get request
      */
-    $validator = validate('qt', 'sub1', 'sub2', 'm-aaid');
+    $validator = validate('sub1', 'sub2', 'm-aaid');
     /**
      * check if validation success
      */
@@ -26,7 +26,7 @@ if(isset($_GET['serve'])):
      * Admarketplace API
      */
     // search keyword
-    $qt = $_GET['qt'];
+    // $qt = $_GET['qt'];
     // sub1 single data
     $sub1 = $_GET['sub1'];
     // sub2 list
@@ -55,7 +55,8 @@ if(isset($_GET['serve'])):
         $admarketplace = $tokens['admarketplace'];
 
         $admarketplaceQuery = $admarketplace['requestAddon'];
-        $admarketplaceQuery['qt'] = $qt;
+        // qt disabled to tile feed
+        // $admarketplaceQuery['qt'] = $qt;
         $admarketplaceQuery['sub1'] = $sub1;
         $admarketplaceQuery['sub2'] = $sub2;
         $admarketplaceQuery['m-aaid'] = $m_aaid;
@@ -63,8 +64,8 @@ if(isset($_GET['serve'])):
         $admarketplaceUrl = $admarketplace['url'].'?'.http_build_query($admarketplaceQuery);
 
         $admarketplaceResponse = json_decode(file_get_contents($admarketplaceUrl));
+        $ads = $admarketplaceResponse->tiles;
 
-        $ads = $admarketplaceResponse->adlistings->listing;
 
         /**
          * loop admarketplace offers
@@ -77,16 +78,21 @@ if(isset($_GET['serve'])):
             $affiseUrl = $affise['url'];
             $affiseHeaders = $affise['headers'];
             $affiseParams = $affise['requestAddon'];
-            $affiseParams['title'] = $ad->title . ' - '. $sub2;
-            $affiseParams['url'] = $ad->clickurl;
-            $affiseParams['url_preview'] = addhttp($ad->displayurl);
+            $affiseParams['title'] = $ad->name . ' - ' . $ad->id . ' - ' . $sub2;
+            $affiseParams['url'] = $ad->click_url;
+            $affiseParams['url_preview'] = addhttp($ad->image_url);
             $affiseParams['status'] = 'active';
             $affiseParams['sub_account_1'] = $sub1;
             $affiseParams['sub_account_2'] = $sub2;
-            $affiseParams['description_lang'] = [
-                'en' => $ad->description,
-            ];
-            $affiseParams['external_offer_id'] = $ad->adId;
+            /**
+             * no description exist in the new api
+             */
+            // $affiseParams['description_lang'] = [
+            //     'en' => $ad->description,
+            // ];
+            $affiseParams['external_offer_id'] = $ad->id;
+
+            dd($affiseParams);
 
             /**
              * payment part
