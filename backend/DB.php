@@ -31,9 +31,15 @@ class DB{
 
     }
 
-    public function query($query){
+    public function query($query, $debug = false){
         $ee = $this->con->prepare($query);
-        return $ee->execute();
+        if($debug){ dd($query); }
+        if($ee->execute()){
+            $ss = $this->con->prepare("SELECT LAST_INSERT_ID() as `id`");
+            $ss->execute();
+            return $ss->fetch(\PDO::FETCH_ASSOC)['id'];
+        }
+        return false;
     }
 
     public function createTables(){

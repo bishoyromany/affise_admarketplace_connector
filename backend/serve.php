@@ -7,6 +7,8 @@ require_once "helpers.php";
 require_once "DB.php";
 
 if(isset($_GET['serve'])):
+    $isTest = true;
+
     /**
      * get the API tokens
      */
@@ -96,8 +98,6 @@ if(isset($_GET['serve'])):
             (sub1, sub2, sub1Fake, ad_id, url, name, impression_url, click_url, image_url) 
             VALUES('$sub1', '$sub2', $fakeSub1, $ad->id, '$admarketplaceUrl', '$ad->name', '$ad->impression_url', '$ad->click_url', '$ad->image_url')");
 
-            dd($storeAd);
-
             /**
              * Affise API
              */
@@ -137,10 +137,23 @@ if(isset($_GET['serve'])):
             // $affiseParams['payments']['sub1'] = $sub1;
             // $affiseParams['payments']['sub2'] = $sub2;
 
-            // send the request to affise api to store the data
-            $data = post($affiseUrl, $affiseParams, $affiseHeaders);
+            if($isTest){
+                $data = json_encode(['id' => 1111]);
+            }else{
+                // send the request to affise api to store the data
+                $data = post($affiseUrl, $affiseParams, $affiseHeaders);
+            }
+ 
             // add offer to the added offers
             array_push($addedOffers, $data);
+            
+            $storeOffer = $db->query("INSERT INTO `".$prefix."affise` 
+            (sub1, sub2, sub1Fake, ad_id, title, 
+            impression_url, click_url, image_url, 
+            offer_id, offer, adm_id) 
+            VALUES('$sub1', '$sub2', $fakeSub1, $ad->id, '".$affiseParams['title']."', 
+            '$ad->impression_url', '$ad->click_url', '$ad->image_url', 
+            ".json_decode($data)->id.", '$data', $storeAd)");
         endforeach;
     endforeach;
 
