@@ -35,9 +35,13 @@ class DB{
         $ee = $this->con->prepare($query);
         if($debug){ dd($query); }
         if($ee->execute()){
-            $ss = $this->con->prepare("SELECT LAST_INSERT_ID() as `id`");
-            $ss->execute();
-            return $ss->fetch(\PDO::FETCH_ASSOC)['id'];
+            if(preg_match('/^INSERT/', $query, $matches)){
+                $ss = $this->con->prepare("SELECT LAST_INSERT_ID() as `id`");
+                $ss->execute();
+                return $ss->fetch(\PDO::FETCH_ASSOC)['id'];
+            }else{
+                return $ee->fetchAll(\PDO::FETCH_ASSOC);
+            }
         }
         return false;
     }

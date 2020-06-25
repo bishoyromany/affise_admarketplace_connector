@@ -2,6 +2,7 @@
     require_once "backend/helpers.php";
     if(isset($_POST['serve'])){
         $data = [
+            'base' => $_POST['base'],
             'admarketplace' => [
                 'url' => $_POST['admarketplaceUrl'],
                 'requestAddon' => [
@@ -77,11 +78,25 @@
     </style>
 </head>
 <body>
+<?php require_once __DIR__.'/backend/navbar.php'; ?>
+
 <div class="content">
         <h3 class="text-center">API Configuration</h3>
         <div class="container">
             <div class="col-md-8 offset-2">
                 <form action="config.php" method="POST">
+                    <!-- Base URL -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="base">Base URL</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="base" value="<?php echo $tokens->base?>" id="base" class="form-control" placeholder="Base URL">
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Admarketplace URL -->
                     <div class="form-group">
                         <div class="row">

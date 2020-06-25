@@ -1,4 +1,5 @@
 {
+    "base": "http://localhost/affise_admarketplace_connector",
     "admarketplace": {
         "url": "http://trendqube.tiles.ampfeed.com/tiles",
         "requestAddon": {

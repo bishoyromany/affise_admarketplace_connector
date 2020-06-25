@@ -160,5 +160,9 @@ if(isset($_GET['serve'])):
     /**
      * show the result of added offers
      */
+    echo "<button><a href='".getConfig('base')."'>Go Back<a/></button>";
+
     dd(["addedOffsers" => $addedOffers, "countOfAddedOffers" => count($addedOffers)]);
+
+
 endif;

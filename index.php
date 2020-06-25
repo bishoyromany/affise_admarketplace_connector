@@ -1,3 +1,8 @@
+<?php 
+    require_once __DIR__.'/backend/helpers.php';
+    $base = getConfig('base');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +31,12 @@
     </style>
 </head>
 <body>
+
+
+    <?php require_once __DIR__.'/backend/navbar.php'; ?>
+
+
+
     <div class="content">
         <h3 class="text-center">Welcome To Affise - Admarketplace APIs Connector</h3>
         <div class="container">
@@ -109,7 +120,7 @@
                             <button class="btn btn-success btn-block">Start Script</button>
                         </div>
                         <div class="col-md-12 text-center">
-                            <a href="config.php">Configuration API</a>
+                            <a href="<?php echo $base; ?>/config.php?target=config">Configuration API</a>
                         </div>
                     </div>
                 </form> 
