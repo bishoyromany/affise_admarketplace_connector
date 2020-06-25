@@ -31,6 +31,8 @@
 </head>
 <body>
     <?php require_once __DIR__.'/backend/navbar.php'; ?>
+    
+    <?php if(isLogged()): ?>
 
     <div class="content">
         <h3 class="text-center">Welcome To Affise - Admarketplace APIs Connector</h3>
@@ -122,6 +124,10 @@
             </div>
         </div>
     </div>
+    
+    <?php else: ?>
+        <div class="alert alert-warning">You are not allowed to view this page</div>
+    <?php endif; ?>
 
     <?php require_once __DIR__.'/boostrap.html'; ?>
     <script>

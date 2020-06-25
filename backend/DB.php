@@ -39,8 +39,10 @@ class DB{
                 $ss = $this->con->prepare("SELECT LAST_INSERT_ID() as `id`");
                 $ss->execute();
                 return $ss->fetch(\PDO::FETCH_ASSOC)['id'];
-            }else{
+            }elseif(preg_match('/^SELECT/', $query, $matches)){
                 return $ee->fetchAll(\PDO::FETCH_ASSOC);
+            }else{
+                return $ee;
             }
         }
         return false;
@@ -92,8 +94,9 @@ class DB{
             $cc->execute();
         }
 
+        $password = sha1('admin');
         $addAdmin = $this->con->prepare("INSERT INTO `".$this->prefix."users` (firstname, lastname, email, password, isActive) 
-        VALUES('Admin', 'Admin', 'admin@admin','".sha1(`admin`)."', 1)");
+        VALUES('Admin', 'Admin', 'admin@admin.admin','$password', 1)");
 
         $addAdmin->execute();
 

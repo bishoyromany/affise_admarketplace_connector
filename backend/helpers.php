@@ -1,4 +1,7 @@
 <?php 
+// Start the session
+session_start();
+
 /**
  * debug the content of any variable
  */
@@ -63,4 +66,9 @@ function getConfig($option){
     }
 
     return $options;
+}
+
+
+function isLogged(){
+    return isset($_SESSION['logged_in']);
 }

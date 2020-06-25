@@ -22,6 +22,23 @@
       <li class="nav-item <?php echo $target == 'config' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?php echo $base; ?>/config.php?target=config">Configurations</a>
       </li>
+      <li class="nav-item <?php echo $target == 'users' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?php echo $base; ?>/user/users.php?target=users">Manage Users</a>
+      </li>
+
+      <?php 
+      if(!isLogged()){ ?>
+        <li class="nav-item <?php echo $target == 'signin' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?php echo $base; ?>/user/signin.php?target=signin">Signin</a>
+        </li>
+        <li class="nav-item <?php echo $target == 'signup' ? 'active' : ''; ?>">
+          <a class="nav-link" href="<?php echo $base; ?>/user/signup.php?target=signup">Signup</a>
+        </li>
+      <?php }else{ ?>
+        <li class="nav-item <?php echo $target == 'logout' ? 'active' : ''; ?>">
+          <a class="nav-link" href="<?php echo $base; ?>/user/logout.php?target=logout">Logout</a>
+        </li>
+      <?php } ?>
     </ul>
   </div>
 </nav>
