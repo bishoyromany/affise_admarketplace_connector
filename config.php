@@ -20,7 +20,13 @@
                 ],
                 'headers' => [$_POST['header']]
             ],
-            'sub2' => []
+            'sub2' => [],
+            "database" => [
+                "username" => $_POST['database_username'],
+                "password" => $_POST['database_password'],
+                "name" => $_POST['database_name'],
+                "prefix" => $_POST['database_prefix']
+            ]
         ];
 
         if(!empty($_POST['sub2'])){
@@ -212,6 +218,56 @@
                     <input type="hidden" name="sub2" id="sub2" value="1">
                     <!-- start the script value, must be 1 to start the script -->
                     <input type="hidden" name="serve" value="1">
+
+                    <!-- Database Login Username -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="database_username">Database Username</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="database_username" value="<?php echo $tokens->database->username ?>" id="database_username" class="form-control" placeholder="Database Login Username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Login Password -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="database_password">Database Password</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="database_password" value="<?php echo $tokens->database->password ?>" id="database_password" class="form-control" placeholder="Database Login Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Name -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="database_name">Database Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="database_name" value="<?php echo $tokens->database->name ?>" id="database_name" class="form-control" placeholder="Database Name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Table Prefix -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="database_prefix">Database Prefix</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="database_prefix" value="<?php echo $tokens->database->prefix ?>" id="database_prefix" class="form-control" placeholder="Database Tables Prefix">
+                            </div>
+                        </div>
+                    </div>
+
+
                     <!-- submit button -->
                     <div class="row">
                         <div class="col-md-6 offset-3">

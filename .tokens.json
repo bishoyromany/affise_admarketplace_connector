@@ -25,6 +25,7 @@
     "database": {
         "username": "root",
         "password": "",
+        "name": "affise_api_connector",
         "prefix": "affise_api"
     }
 }

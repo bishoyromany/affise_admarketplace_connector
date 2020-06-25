@@ -47,3 +47,20 @@ function addhttp($url) {
     }
     return $url;
 }
+
+/**
+ * get option
+ */
+function getConfig($option){
+    $options = json_decode(file_get_contents(__DIR__.'./../tokens.json'), true);
+    $parts = explode('->',$option);
+    try{
+        foreach($parts as $part){
+            $options = $options[$part];
+        }
+    }catch(\Exception $e){
+        return false;
+    }
+
+    return $options;
+}
