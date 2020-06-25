@@ -32,7 +32,8 @@ class DB{
     }
 
     public function query($query){
-
+        $ee = $this->con->prepare($query);
+        return $ee->execute();
     }
 
     public function createTables(){
@@ -87,6 +88,10 @@ class DB{
         $addAdmin->execute();
 
         return true;
+    }
+
+    public function getPrefix(){
+        return $this->prefix;
     }
 }
 

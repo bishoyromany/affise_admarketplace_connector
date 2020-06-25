@@ -4,6 +4,7 @@
  * include the helpers functions [dd, validate, addHttp, post]
  */
 require_once "helpers.php";
+require_once "DB.php";
 
 if(isset($_GET['serve'])):
     /**
@@ -21,6 +22,9 @@ if(isset($_GET['serve'])):
         echo $validator;
         exit;
     }  
+
+    $db = new DB();
+    $prefix = $db->getPrefix();
 
     /**
      * Admarketplace API
@@ -69,11 +73,31 @@ if(isset($_GET['serve'])):
 
         $admarketplaceResponse = json_decode(file_get_contents($admarketplaceUrl));
         $ads = $admarketplaceResponse->tiles;
-        
+
         /**
          * loop admarketplace offers
          */
         foreach($ads as $ad):
+            // id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            // sub1 VARCHAR(30) NOT NULL,
+            // sub2 VARCHAR(30) NOT NULL,
+            // sub1Fake VARCHAR(30) NOT NULL,
+            // url TEXT NOT NULL,
+            // name VARCHAR(150) NOT NULL,
+            // impression_url VARCHAR(150) NOT NULL,
+            // ad_id INT(11) NOT NULL,
+            // click_url VARCHAR(150) NOT NULL,
+            // image_url VARCHAR(150) NOT NULL)
+
+            /**
+             * store data ad
+             */
+            $storeAd = $db->query("INSERT INTO `".$prefix."adm` 
+            (sub1, sub2, sub1Fake, ad_id, url, name, impression_url, click_url, image_url) 
+            VALUES('$sub1', '$sub2', $fakeSub1, $ad->id, '$admarketplaceUrl', '$ad->name', '$ad->impression_url', '$ad->click_url', '$ad->image_url')");
+
+            dd($storeAd);
+
             /**
              * Affise API
              */
