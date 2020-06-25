@@ -7,7 +7,8 @@ class DB{
     private $name;
     private $prefix;
     private $con;
-    
+    private $success = true;
+
     public function __construct(){
         $this->username = getConfig('database->username');
         $this->pw = getConfig('database->password');
@@ -23,10 +24,14 @@ class DB{
             try{
                 $checker->execute();
             }catch(\Exception $e){
-                $this->createTables();
+                try{
+                    $this->createTables();
+                }catch(\Exception $e){
+                    $this->success = false;
+                }
             }
         }catch(\Exception $e){
-            dd($e);
+            $this->success = false;
         }
 
     }
@@ -105,6 +110,10 @@ class DB{
 
     public function getPrefix(){
         return $this->prefix;
+    }
+
+    public function status(){
+        return $this->success;
     }
 }
 

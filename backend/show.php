@@ -21,7 +21,7 @@
 </head>
 <body>
     <?php require_once __DIR__.'/navbar.php'; ?>
-
+    <?php if(isLogged()): ?>
     <div id="data">
         <div class="container">
             <?php 
@@ -33,7 +33,9 @@
             ?>
         </div>
     </div>
-
+    <?php else: ?>
+        <div class="alert alert-warning">You are not allowed to view this page</div>
+    <?php endif; ?>
     
     <?php require_once __DIR__.'/../boostrap.html'; ?>
 </body>

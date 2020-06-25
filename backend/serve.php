@@ -6,6 +6,11 @@
 require_once "helpers.php";
 require_once "DB.php";
 
+if(!isLogged()):
+    echo '<div class="alert alert-warning">You are not allowed to view this page</div>';
+    exit;
+endif;
+
 if(isset($_GET['serve'])):
     $isTest = true;
 

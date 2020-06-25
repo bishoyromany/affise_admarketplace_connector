@@ -88,7 +88,10 @@
                             <button class="btn btn-success btn-block">Login</button>
                         </div>
                         <div class="col-md-12 text-center">
-                            <a href="<?php echo $base; ?>/user/signup.php?target=signup">Sign Up</a>
+                            <a href="<?php echo $base; ?>/user/signup.php?target=signup">Sign Up</a> <br>
+                            <small>
+                                Default Login Email is: <strong>admin@admin.admin</strong>, Default Password Is: <strong>admin</strong>
+                            </small>
                         </div>
                     </div>
                 </form> 
