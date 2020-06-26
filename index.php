@@ -188,7 +188,9 @@
                 serveSub2Generator();
             }
 
-
+            $("#sub1").keyup(function(e){
+                $("#fakeSub1").val($(this).val());
+            });
             console.log(content);
         });
     </script>   

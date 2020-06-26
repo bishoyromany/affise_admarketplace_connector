@@ -12,7 +12,7 @@ if(!isLogged()):
 endif;
 
 if(isset($_GET['serve'])):
-    $isTest = true;
+    $isTest = false;
 
     /**
      * get the API tokens
