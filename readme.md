@@ -9,7 +9,7 @@
     ```json
     {
         "admarketplace": {
-            "url": "http://trendqube.ampfeed.com/xmlamp/feed",
+            "url": "http://company.ampfeed.com/xmlamp/feed",
             "requestAddon": {
                 "partner": "partner name",
                 "ip": "request api",
@@ -20,7 +20,7 @@
             }
         },
         "affise": {
-            "url": "https://api-trendqube.affise.com/3.0/admin/offer",
+            "url": "https://api-company.affise.com/3.0/admin/offer",
             "requestAddon": {
                 "advertiser": "advertiser id"
             },
@@ -35,7 +35,7 @@
     ```
 2. let's descript this json data 
     1. admarketplace -> url [the url of admarketplace, where script will get offers from it].
-    2. admarketplace -> url -> requestAddon -> partner [the partner name for example "trendqube"]
+    2. admarketplace -> url -> requestAddon -> partner [the partner name for example "company"]
     3. admarketplace -> url -> requestAddon -> ip [the request user api write any ip address if you want]
     4. affise -> url [the url of affist api, where the script can add the offer]
     5. affise -> requestAddon -> advertiser [the advertiser id, where the offer will be stored for that advertiser]
@@ -49,4 +49,4 @@
     4. m-aaid: it's for admarketplace related to if the offer was opened using mobile
     5. start script: this will run the script progress, and add the offers
 
-## for technical stuff check our this https://github.com/bishoyromany/affise_admarketplace_connector/blob/master/tech.md
+## for technical stuff check this https://github.com/bishoyromany/affise_admarketplace_connector/blob/master/tech.md
